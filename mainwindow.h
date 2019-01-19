@@ -23,7 +23,7 @@ private slots:
     void setProgressBar(int value);
     void addNewFile(QString path);
     void lineSetDisabled(bool value);
-    void searchFinished();
+    void searchFinished(bool found);
 
 private:
     Ui::MainWindow *ui;

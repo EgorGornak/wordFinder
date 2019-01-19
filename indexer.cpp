@@ -89,6 +89,7 @@ void Indexer::calculateTrigram() {
 void Indexer::findWord(std::string word) {
     emit setProgressBar(0);
     qint64 currentSize = 0;
+    bool foundAnyFile = false;
 
     // Knuth-Morris-Pratt ке5
     word += '\0';
@@ -144,6 +145,7 @@ void Indexer::findWord(std::string word) {
                 last = j;
                 if (last + 1 == word.size()) {
                     wordFound = true;
+                    foundAnyFile = true;
                     emit addNewFile(info.first.filePath());
                     break;
                 }
@@ -156,7 +158,7 @@ void Indexer::findWord(std::string word) {
         emit setProgressBar(static_cast<int>(100 * currentSize / totalTextSize));
     }
 
-    emit searchFinished();
+    emit searchFinished(foundAnyFile);
 }
 
 void Indexer::setCancel(bool value) {

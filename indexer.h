@@ -15,7 +15,7 @@ signals:
     void addNewFile(QString path);
     void setProgressBar(int value);
     void lineSetDisabled(bool value);
-    void searchFinished();
+    void searchFinished(bool found);
 
 public slots:
     void scanDirectory(QString const &dir);

@@ -62,8 +62,8 @@ void MainWindow::lineSetDisabled(bool value) {
     ui->lineEdit->setDisabled(value);
 }
 
-void MainWindow::searchFinished() {
-    if (ui->treeWidget->takeTopLevelItem(0) == nullptr) {
+void MainWindow::searchFinished(bool found) {
+    if (!found) {
         QTreeWidgetItem* notFound = new QTreeWidgetItem();
         notFound->setText(0, "Word not found");
         ui->treeWidget->addTopLevelItem(notFound);
