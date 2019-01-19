@@ -61,8 +61,10 @@ void Indexer::calculateTrigram() {
                 for (int i = 2; i < bufferSize; i++) {
                     trigrams.insert(getTrigram(buffer[i - 2], buffer[i - 1], buffer[i]));
                 }
-                last[0] = buffer[bufferSize - 2];
-                last[1] = buffer[bufferSize - 1];
+                if (bufferSize > 1) {
+                    last[0] = buffer[bufferSize - 2];
+                    last[1] = buffer[bufferSize - 1];
+                }
                 if (trigrams.size() > 50000) {
                     isTextFile = false;
                     break;
