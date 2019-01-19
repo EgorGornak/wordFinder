@@ -18,6 +18,7 @@ void Indexer::scanDirectory(QString const &directory) {
     QDirIterator it(directory, QDirIterator::Subdirectories);
     while(it.hasNext()) {
         if (isCancel) {
+            emit setProgressBar(100);
             return;
         }
 
